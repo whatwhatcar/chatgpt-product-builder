@@ -1,0 +1,23 @@
+/* ----- product search ------ */
+
+.search-field {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;    
+}
+
+#search-bar {
+    flex: 1;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+}
+
+#category-list {
+    outline: none;
+}

@@ -1,0 +1,55 @@
+#popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    place-items: center;
+    z-index: 2;
+}
+
+#popup-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+        z-index: 3;
+
+}
+
+.popup-box {
+    width: 500px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    border: 4px solid gray;
+    position: relative;
+}
+
+.shadow {
+    position: absolute;
+    inset: 0;
+    background: black;
+    opacity: .5;
+}
+
+/* add button*/
+
+#popup-add {
+    background-color: green;
+    z-index: 3;
+}
+
+#popup-add.selected {
+    background-color: red;
+}
+
+#popup-add::after {
+    content: "add";
+}
+
+#popup-add.selected::after {
+    content: "remove";
+}
+
