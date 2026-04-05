@@ -78,7 +78,7 @@ export function receive_message(input_text) {
             const data = await get_message(
                 messages,
                 [...product_list.values()], // ✅ Map → array of product objects
-                [...selected_products]       // ✅ Set → array of ids
+                [...selected_products].map(id => product_list.get(id))
             );
             // ✅ removed the wrong messages.push here — get_message already does it
             reply_message(data);
