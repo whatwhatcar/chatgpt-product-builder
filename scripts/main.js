@@ -75,13 +75,13 @@ export function receive_message(input_text) {
 
     (async () => {
         try {
-            const message = await get_message(
+            const data = await get_message(
                 messages,
                 [...product_list.values()], // ✅ Map → array of product objects
-                [...selected_products]       // ✅ Set → array of ids
+                [...selected_products].map(id => product_list.get(id))
             );
             // ✅ removed the wrong messages.push here — get_message already does it
-            reply_message(message);
+            reply_message(data);
         } finally {
             request_in_flight = false;
         }
