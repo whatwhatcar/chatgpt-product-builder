@@ -6,7 +6,7 @@
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": "chatgpt-product/public"
   },
   "compatibility_flags": [
     "nodejs_compat"
