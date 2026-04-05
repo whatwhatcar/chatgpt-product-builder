@@ -1,0 +1,9 @@
+#products-selected {}
+
+.product {
+    color: red;
+}
+
+.cart {
+    background-color: green;
+}
