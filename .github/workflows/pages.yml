@@ -27,6 +27,6 @@ jobs:
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: chatgpt-twerk/public
+          path: chatgpt-product/public
       - id: deployment
         uses: actions/deploy-pages@v4
