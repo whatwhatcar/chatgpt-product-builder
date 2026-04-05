@@ -58,6 +58,8 @@ export function search_products(category, name) {
     };
 }
 
+import { get_message } from './message.js'
+
 let messages = [];
 let request_in_flight = false;
 
