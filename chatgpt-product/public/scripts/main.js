@@ -19,7 +19,7 @@ function load_selected() {
     try {
         const saved = localStorage.getItem('selected_products');
         if (saved) return new Set(JSON.parse(saved));
-    } catch {}
+    } catch { }
     return new Set();
 }
 
@@ -45,6 +45,16 @@ fetch('products.json')
     .then(data => update(data))
     .catch(err => console.error("Failed to fetch products: ", err)
     );
+
+export function clear_all() {
+    selected_products.forEach(highlight);
+    selected_products.clear();
+    save_selected();
+    clear_checkout();
+    selected_products.forEach(id => {
+        checkout_product(product_list.get(id));
+    });
+}
 
 export function get_product(product_id) {
     const selected = selected_products.has(product_id);
