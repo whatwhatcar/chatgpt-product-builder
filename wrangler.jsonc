@@ -6,7 +6,10 @@
     "enabled": true
   },
   "assets": {
-    "directory": "chatgpt-product/public"
+    "directory": "chatgpt-product/public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
   },
   "compatibility_flags": [
     "nodejs_compat"
