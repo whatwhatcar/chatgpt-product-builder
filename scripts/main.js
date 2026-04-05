@@ -58,13 +58,30 @@ export function search_products(category, name) {
     };
 }
 
+let messages = [];
+let request_in_flight = false;
+
 export function receive_message(input_text) {
-    //attach selected products to the prompt input
+    if (request_in_flight) return;
+    request_in_flight = true;
+
     prompt_message(input_text);
+    messages.push({ role: "user", content: input_text });
 
-    //send reply with selected product suggestions
-    reply_message(input_text);
     console.log(input_text);
-
     console.log(selected_products);
+
+    (async () => {
+        try {
+            const data = await get_message(
+                messages,
+                [...product_list.values()], // ✅ Map → array of product objects
+                [...selected_products]       // ✅ Set → array of ids
+            );
+            // ✅ removed the wrong messages.push here — get_message already does it
+            reply_message(data);
+        } finally {
+            request_in_flight = false;
+        }
+    })();
 }

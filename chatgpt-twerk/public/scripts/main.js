@@ -63,8 +63,6 @@ import { get_message } from './message.js'
 let messages = [];
 let request_in_flight = false;
 
-//product_list, selected_products
-
 export function receive_message(input_text) {
     if (request_in_flight) return;
     request_in_flight = true;
