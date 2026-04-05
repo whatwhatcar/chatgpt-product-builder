@@ -7,6 +7,11 @@ import { render_product, highlight, filter_product, clear_products } from './car
 import { add_category } from './search/category.js'
 import { prompt_message, reply_message } from './chat/receive.js'
 
+import { get_message } from './message.js'
+
+let messages = [];
+let request_in_flight = false;
+
 let product_list = new Map(); //id, product
 let selected_products = new Set(); // multiple id
 let product_categories = new Set(); // category names
@@ -88,11 +93,6 @@ export function search_products(category, name) {
     };
 }
 
-import { get_message } from './message.js'
-
-let messages = [];
-let request_in_flight = false;
-
 export function receive_message(input_text) {
     if (request_in_flight) return;
     request_in_flight = true;
@@ -105,13 +105,12 @@ export function receive_message(input_text) {
 
     (async () => {
         try {
-            const data = await get_message(
+            const message = await get_message(
                 messages,
-                [...product_list.values()], // ✅ Map → array of product objects
+                [...product_list.values()],
                 [...selected_products].map(id => product_list.get(id))
             );
-            // ✅ removed the wrong messages.push here — get_message already does it
-            reply_message(data);
+            reply_message(message);
         } finally {
             request_in_flight = false;
         }
