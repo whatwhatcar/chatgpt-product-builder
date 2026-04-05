@@ -11,13 +11,32 @@ let product_list = new Map(); //id, product
 let selected_products = new Set(); // multiple id
 let product_categories = new Set(); // category names
 
+function save_selected() {
+    localStorage.setItem('selected_products', JSON.stringify([...selected_products]));
+}
+
+function load_selected() {
+    try {
+        const saved = localStorage.getItem('selected_products');
+        if (saved) return new Set(JSON.parse(saved));
+    } catch {}
+    return new Set();
+}
+
 function update(data) {
+    const saved = load_selected();
     data.products.forEach(product => {
         product_list.set(product.id, product);
         render_product(product);
         if (product_categories.has(product.category)) return;
         product_categories.add(product.category);
         add_category(product.category);
+    });
+    saved.forEach(id => {
+        if (!product_list.has(id)) return;
+        selected_products.add(id);
+        highlight(id);
+        checkout_product(product_list.get(id));
     });
 }
 
@@ -36,6 +55,7 @@ export function get_product(product_id) {
 export function add_to_cart(product_id) {
     const selected = selected_products.has(product_id);
     selected ? selected_products.delete(product_id) : selected_products.add(product_id);
+    save_selected();
     update_button(!selected);
 
     highlight(product_id);

@@ -1,4 +1,4 @@
-# Publishes my-api-proxy/public to GitHub Pages (static UI only).
+# Publishes chatgpt-product/public to GitHub Pages (static UI only).
 # Set api-origin in public/index.html to your deployed Worker URL so chat works.
 name: Deploy to GitHub Pages
 
