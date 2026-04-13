@@ -1,23 +1,55 @@
-/* ----- product search ------ */
+/* ---- Search field ---- */
 
 .search-field {
-    height: 40px;
     display: flex;
     flex-direction: row;
-    width: 100%;    
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 4px;
 }
 
 #search-bar {
     flex: 1;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
-    color: #333;
+    height: 40px;
+    padding: 0 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--dark);
     outline: none;
+    transition: border-color 0.18s;
+}
+
+#search-bar::placeholder {
+    color: #bbb;
+}
+
+#search-bar:focus {
+    border-color: var(--dark);
 }
 
 #category-list {
+    height: 40px;
+    padding: 0 10px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--dark);
+    cursor: pointer;
     outline: none;
+    transition: border-color 0.18s;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+#category-list:focus {
+    border-color: var(--dark);
 }

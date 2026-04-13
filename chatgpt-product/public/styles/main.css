@@ -1,30 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
 :root {
-    --primary-color: white;
+    --gold: #C4A253;
+    --gold-light: #e8d9a8;
+    --dark: #1a1a1a;
+    --white: #ffffff;
+    --off-white: #f9f8f6;
+    --light: #f3f1ed;
+    --border: #e5e2db;
+    --text-muted: #888888;
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-lg: 20px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 
-    --bubble-color: grey;
-    --chat-color: white;
-    --chat-font: 'arial';
-
-    --ai-color: black;
-    --ai-font: 'Times-New-Roman';
+    /* backward compat vars used in other files */
+    --primary-color: var(--off-white);
+    --bubble-color: var(--dark);
+    --chat-color: var(--white);
+    --chat-font: 'Inter', sans-serif;
+    --ai-color: var(--dark);
+    --ai-font: 'Inter', sans-serif;
+    --popup-color: var(--white);
 }
 
-
-.logo {
-    height: 60px;
+* {
+    box-sizing: border-box;
 }
 
 body {
+    background-color: var(--off-white);
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 440px;
+    grid-template-areas:
+        "header header"
+        "main   chat"
+        "footer footer";
+}
+
+/* ---- Header ---- */
+
+header {
+    grid-area: header;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: var(--primary-color);
+    padding: 24px 40px 20px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
 }
+
+.logo {
+    height: 44px;
+    object-fit: contain;
+}
+
+header h1 {
+    margin-top: 8px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+}
+
+/* ---- Main (shop) ---- */
 
 main {
-    width: 100%;
-    max-width: 500px;
+    grid-area: main;
+    padding: 24px 28px;
+    overflow-y: auto;
+    min-height: 0;
+    border-right: 1px solid var(--border);
 }
 
+/* ---- Action buttons ---- */
+
+#clear-button,
+#routine-button {
+    margin-top: 20px;
+    margin-right: 8px;
+    padding: 9px 22px;
+    border: 1.5px solid var(--dark);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+#clear-button:hover {
+    background: var(--dark);
+    color: var(--white);
+}
+
+#routine-button {
+    background: var(--dark);
+    color: var(--white);
+}
+
+#routine-button:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+/* ---- HR separator ---- */
+
+hr {
+    margin: 24px 0 20px;
+    border: none;
+    border-top: 1px solid var(--border);
+}
+
+/* ---- Footer ---- */
+
+footer {
+    grid-area: footer;
+    background: var(--dark);
+    color: var(--white);
+    padding: 20px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+footer div {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+}
+
+/* ---- Responsive: stack on narrow screens ---- */
+
+@media (max-width: 800px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "header"
+            "main"
+            "chat"
+            "footer";
+        height: auto;
+    }
+
+    main {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow-y: visible;
+    }
+}

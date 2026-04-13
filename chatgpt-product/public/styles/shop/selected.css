@@ -1,9 +1,32 @@
-#products-selected {}
+/* ---- Selected products panel ---- */
 
-.product {
-    color: red;
+#products-selected {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.cart {
-    background-color: green;
+#products-selected:not(:empty)::before {
+    content: "Selected Products";
+    display: block;
+    width: 100%;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+/* Selected product chips reuse .product from products.css but are always gold */
+#products-selected .product {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+    font-size: 0.78rem;
+}
+
+#products-selected .product:hover {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--white);
 }

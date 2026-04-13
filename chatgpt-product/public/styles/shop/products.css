@@ -1,15 +1,43 @@
-#product-list {
+/* ---- Product list ---- */
 
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
 }
 
+/* ---- Product chips ---- */
+
 .product {
-    color: red;
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    background: var(--white);
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+.product:hover {
+    border-color: var(--dark);
+    background: var(--dark);
+    color: var(--white);
+}
+
+.cart {
+    background: var(--gold) !important;
+    border-color: var(--gold) !important;
+    color: var(--white) !important;
 }
 
 .hidden {
     display: none;
-}
-
-.cart {
-    background-color: green;
 }

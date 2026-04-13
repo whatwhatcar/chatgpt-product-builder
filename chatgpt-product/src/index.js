@@ -51,7 +51,7 @@ export default {
 				return jsonResponse(
 					{
 						error:
-							"Missing OPENAI_API_KEY. For local dev: create chatgpt-twerk/.dev.vars with OPENAI_API_KEY=sk-... and restart wrangler. For production: npx wrangler secret put OPENAI_API_KEY then deploy.",
+							"Missing OPENAI_API_KEY. For local dev: create chatgpt-product/.dev.vars with OPENAI_API_KEY=sk-... and restart wrangler. For production: npx wrangler secret put OPENAI_API_KEY then deploy.",
 					},
 					503,
 					corsHeaders

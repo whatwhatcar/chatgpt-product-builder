@@ -6,6 +6,6 @@ const products_selected = document.getElementById("products-selected");
 products_selected.addEventListener('click', (event) => {
     const product = event.target.closest('.product');
     if (!product) return;
-    change_current(Number(product.dataset.product_id));
-    get_product(Number(product.dataset.product_id));
+    change_current(Number(product.dataset.productId));
+    get_product(Number(product.dataset.productId));
 });

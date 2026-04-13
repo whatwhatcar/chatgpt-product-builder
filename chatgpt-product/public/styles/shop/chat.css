@@ -1,72 +1,119 @@
-/* conversation */
+/* ---- Chat container ---- */
+
+.chat-container {
+    grid-area: chat;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: var(--white);
+}
+
+/* ---- Chat message area ---- */
 
 #chat-box {
+    flex: 1;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    position: relative;
-
-    width: 500px;
-    height: 300px;
-    border: 2px solid grey;
-
-    padding: 10px;
-    gap: 10px;
+    padding: 20px 18px;
+    gap: 12px;
+    min-height: 0;
 }
 
-/* prompt messages */
+/* ---- User message bubbles ---- */
 
 .prompt {
-    display: inline-block;
     align-self: flex-end;
-
-    padding: 10px;
-
-    background-color: var(--bubble-color);
-    border-radius: 999em;
-
-    color: var(--chat-color);
-    font-family: var(--chat-font);
+    max-width: 80%;
+    padding: 10px 15px;
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 18px 18px 4px 18px;
 }
 
-/* reply messages */
+/* ---- AI reply messages ---- */
 
 .reply {
     align-self: flex-start;
-        text-align: left;
-
-
-    color: var(--ai-color);
-    font-family: var(--ai-font);
+    max-width: 88%;
+    padding: 10px 15px;
+    background: var(--light);
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    border-radius: 4px 18px 18px 18px;
+    text-align: left;
 }
 
-/* input messages */
+/* ---- Input bar ---- */
 
 .input-container {
-    height: 40px;
     display: flex;
     flex-direction: row;
-    position: sticky;
+    border-top: 1px solid var(--border);
+    padding: 12px 14px;
+    gap: 8px;
+    background: var(--white);
+    flex-shrink: 0;
 }
 
 #input-field {
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
-    color: #333;
-    width: 100%;
+    flex: 1;
+    height: 40px;
+    padding: 0 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--off-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: var(--dark);
     outline: none;
+    transition: border-color 0.18s;
+}
+
+#input-field::placeholder {
+    color: #bbb;
+}
+
+#input-field:focus {
+    border-color: var(--dark);
+    background: var(--white);
 }
 
 #send-button {
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1/1;
+    height: 40px;
+    padding: 0 18px;
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.18s;
+    flex-shrink: 0;
+}
 
-    border-radius: 5px;
+#send-button:hover {
+    background: var(--gold);
+}
+
+/* ---- Chat empty state label ---- */
+
+#chat-box:empty::before {
+    content: "Ask me about your skincare routine…";
+    color: var(--text-muted);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    align-self: center;
+    margin: auto;
+    text-align: center;
 }

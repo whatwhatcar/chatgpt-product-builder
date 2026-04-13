@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="api-origin" content="https://chatgpt-product-builder.myworker-aichatbot.workers.dev">
-    <title>Page Title</title>
+    <title>L'Oréal — Personal Product Advisor</title>
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/main.css">
 
@@ -25,7 +25,7 @@
 
     <main>
         <div class="search-field">
-            <input id="search-bar" type="text" autocomplete="off">
+            <input id="search-bar" type="text" autocomplete="off" placeholder="Search products…">
             <select id="category-list" name="products">
                 <option value="">All Categories</option>
             </select>
@@ -34,18 +34,21 @@
         <div id="product-list"></div>
 
         <button id="clear-button">clear all</button>
+        <button id="routine-button">generate routine</button>
+
 
         <div id="popup">
             <div class="shadow"></div>
             <div class="popup-box">
-                <button id="popup-close">x</button>
-                <button id="popup-add"></button>
-
-                <div id="popup-name"></div>
-                <div id="popup-brand"></div>
-                <div id="popup-category"></div>
+                <button id="popup-close">&#x2715;</button>
                 <div id="popup-image"></div>
-                <div id="popup-description"></div>
+                <div class="popup-details">
+                    <div id="popup-brand"></div>
+                    <div id="popup-name"></div>
+                    <div id="popup-category"></div>
+                    <div id="popup-description"></div>
+                </div>
+                <button id="popup-add"></button>
             </div>
         </div>
 
@@ -59,12 +62,30 @@
         <div id="chat-box"></div>
 
         <div class="input-container">
-            <input id="input-field" type="text" autocomplete="off">
+            <input id="input-field" type="text" autocomplete="off" placeholder="Ask about your skin type…">
             <button id="send-button" type="button">send</button>
         </div>
     </div>
 
-    <script src="scripts/cart/clear.js" type="module"></script>
+    <footer>
+        <ul class="socials">
+            <li><a href="https://www.linkedin.com/company/loréal">linkedin</a></li>
+            <li><a href="https://www.youtube.com/@loreal">youtube</a></li>
+            <li><a href="https://www.instagram.com/lorealgroupe">instagram</a></li>
+            <li><a href="https://www.facebook.com/lorealgroupe">facebook</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="https://www.loreal.com/en/privacy-policy-links">privacy policy</a></li>
+            <li><a href="https://www.loreal.com/en/term-of-use">terms of use</a></li>
+            <li><a href="https://www.lorealparisusa.com/contact-us">contact us</a></li>
+        </ul>
+
+        <div>&copy; L'Oréal. All Rights Reserved.</div>
+    </footer>
+
+    <script src="scripts/cart/buttons/clear.js" type="module"></script>
+    <script src="scripts/cart/buttons/routine.js" type="module"></script>
 
     <script src="scripts/cart/checkout/click.js" type="module"></script>
     <script src="scripts/cart/shopping/click.js" type="module"></script>
